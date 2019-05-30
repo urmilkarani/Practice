@@ -21,16 +21,67 @@
  */
 package dailycodingproblems;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DailyCodingProblem28 {
     public static void main(String[] args) {
-        String[] inputArray = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        int stringLength = 16;
-        List<String> result = justifiedArray(inputArray,stringLength);
+        String[] inputArray = {"tushar", "roy", "likes", "to", "code"};
+        int stringLength = 10;
+        String result = justifiedArray(inputArray,stringLength);
+        System.out.println(result);
     }
 
-    private static List<String> justifiedArray(String[] inputArray, int stringLength) {
-        return null;
+    private static String justifiedArray(String[] inputArray, int stringLength) {
+        int[][] table = new int[inputArray.length][inputArray.length];
+        for(int i = 0 ; i < inputArray.length; i++) {
+            table[i][i] = stringLength - inputArray[i].length();
+            for ( int j = i+1; j < inputArray.length; j++) {
+                table[i][j] = table[i][j-1] - inputArray[j].length() - 1;
+            }
+        }
+
+        for(int i = 0 ; i < inputArray.length; i++) {
+            for (int j = 0 ; j < inputArray.length; j++) {
+                if(table[i][j] < 0) {
+                    table[i][j] = Integer.MAX_VALUE;
+                } else {
+                    table[i][j] = (int) Math.pow(table[i][j],2);
+                }
+            }
+            System.out.println("table ["+i+"]" + Arrays.toString(table[i]));
+        }
+
+        int minCost[] = new int[inputArray.length];
+        int result[] = new int[inputArray.length];
+
+        for(int i = inputArray.length-1; i >= 0; i--) {
+            minCost[i] = table[i][inputArray.length-1];
+            result[i] = inputArray.length;
+            for(int j = inputArray.length - 1; j > i; j--){
+                if(table[i][j-1] == Integer.MAX_VALUE) {
+                    continue;
+                }
+                if(minCost[i] > minCost[j] + table[i][j-1]) {
+                    minCost[i] = minCost[j] + table[i][j-1];
+                    result[i] = j;
+                }
+            }
+        }
+
+        int i = 0;
+        int j;
+        System.out.println("Minimum Cost : "+ minCost[0]);
+        StringBuilder builder = new StringBuilder();
+        do{
+            j = result[i];
+            for(int k=i; k < j; k++){
+                builder.append(inputArray[k] + " ");
+            }
+            builder.append("\n");
+            i = j;
+        }while(j < inputArray.length);
+
+        return builder.toString();
     }
 }
