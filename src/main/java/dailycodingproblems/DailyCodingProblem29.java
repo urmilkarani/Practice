@@ -12,7 +12,7 @@ package dailycodingproblems;
 
 import com.sun.deploy.util.StringUtils;
 
-public class DailyCodingProblems29 {
+public class DailyCodingProblem29 {
     public static void main(String[] args) {
         String input = "AAAABBBCCDAA";
         String encodedString = encodeInput(input);
