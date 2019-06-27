@@ -31,10 +31,7 @@ findNodesWithZeroAndOneParents(parentChildPairs) => [
 
 package dailycodingproblems;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DataBricksQuestion {
     public static void main(String[] args) {
@@ -50,8 +47,8 @@ public class DataBricksQuestion {
 
     private static List<List<Integer>> findParentChildRelationships(int[][] parentChildPairs) {
         int rowLength = parentChildPairs.length;
-        int columnLength = parentChildPairs[0].length;
         HashMap<Integer, List<Integer>> relationMap = new HashMap<>();
+        HashSet<Integer> inputSet = new HashSet<>();
         List<Integer> noParentList = new ArrayList<>();
         List<Integer> oneParentList = new ArrayList<>();
         List<List<Integer>> resultList = new ArrayList<>();
@@ -59,6 +56,8 @@ public class DataBricksQuestion {
             int[] currentPair = parentChildPairs[i];
             int parent = currentPair[0];
             int child = currentPair[1];
+            inputSet.add(parent);
+            inputSet.add(child);
             if(relationMap.containsKey(child)) {
                 List<Integer> currentList = relationMap.get(child);
                 currentList.add(parent);
@@ -70,19 +69,14 @@ public class DataBricksQuestion {
             }
         }
 
-        for(int i = 0; i < rowLength; i++) {
-            int[] currentPair = parentChildPairs[i];
-            int child = currentPair[1];
-            System.out.println(!relationMap.containsKey(child));
+        for(Integer child: inputSet) {
             if(!relationMap.containsKey(child)) {
                 noParentList.add(child);
-                printElements(noParentList);
             }
         }
 
         for (Map.Entry<Integer, List<Integer>> entry : relationMap.entrySet())     {
             List<Integer> parentList = entry.getValue();
-            System.out.println("parentList");
             if(parentList.size() == 1) {
                 oneParentList.add(entry.getKey());
             }
