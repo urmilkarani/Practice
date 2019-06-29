@@ -9,7 +9,6 @@
  */
 package dailycodingproblems;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,36 +16,36 @@ import java.util.List;
 
 public class DailyCodingProblem35 {
     public static void main(String[] args) {
-        String[] input = {"G", "B", "R", "R", "B", "R", "G"};
+        String[] input = {"G", "B", "R", "R", "B", "R", "G", "G", "B", "R", "R", "B", "R", "G"};
         String[] result = sortedArray(input);
         System.out.println(Arrays.toString(result));
     }
 
     private static String[] sortedArray(String[] input) {
-        int length = input.length;
-        HashMap<String, List<Integer>> indexMap = new HashMap<>();
-        for(int i = 0; i < length; i++) {
-            ArrayList<Integer> indexList;
-            if(indexMap.containsKey(input[i])) {
-                indexList = (ArrayList<Integer>)indexMap.get(input[i]);
-                indexList.add(i);
+        int lo = 0;
+        int hi = input.length-1;
+        int mid = lo + (hi - lo)/2;
+        String temp = new String();
+        while(mid <= hi) {
+            if(input[mid].equals("R")) {
+                swap(input, lo, mid);
+                ++mid;
+                ++lo;
+            } else if(input[mid].equals("B")) {
+                swap(input,mid,hi);
+                --hi;
             } else {
-                indexList = new ArrayList<>();
-                indexList.add(i);
+                ++mid;
             }
-            indexMap.put(input[i],indexList);
         }
-        int lastIndexOfR = indexMap.get("R").size()-1;
-        int lastIndexOfG = lastIndexOfR + indexMap.get("G").size();
-        int lastIndexOfB = lastIndexOfG + indexMap.get("B").size();
-        
-        return null;
+
+        return input;
     }
 
-    private void swap(String stringOne, String stringTwo) {
+    private static void swap(String[] input, int lo, int mid) {
         String temp;
-        temp = stringOne;
-        stringOne = stringTwo;
-        stringTwo = temp;
+        temp = input[lo];
+        input[lo] = input[mid];
+        input[mid] = temp;
     }
 }
