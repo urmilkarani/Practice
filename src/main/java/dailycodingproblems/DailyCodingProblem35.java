@@ -9,10 +9,7 @@
  */
 package dailycodingproblems;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 public class DailyCodingProblem35 {
     public static void main(String[] args) {
@@ -25,15 +22,13 @@ public class DailyCodingProblem35 {
         int lo = 0;
         int hi = input.length-1;
         int mid = lo + (hi - lo)/2;
-        String temp = new String();
         while(mid <= hi) {
             if(input[mid].equals("R")) {
                 swap(input, lo, mid);
-                ++mid;
-                ++lo;
+                lo++;
             } else if(input[mid].equals("B")) {
                 swap(input,mid,hi);
-                --hi;
+                hi--;
             } else {
                 ++mid;
             }
