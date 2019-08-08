@@ -40,7 +40,7 @@ class MaxStack extends Stack{
     }
 
     public int getMax() {
-        return !maxStack.isEmpty() ? maxStack.peek() : 0;
+         return !maxStack.isEmpty() ? maxStack.peek() : 0;
     }
 }
 public class DailyCodingProblem43 {
