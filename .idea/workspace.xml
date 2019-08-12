@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc0fcc7f-64a4-4063-be0d-712b90ce33fb" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,21 +73,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DailyCodingProblem43">
-    <configuration name="DailyCodingProblem20" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dailycodingproblems.DailyCodingProblem20" />
-      <module name="Practice" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dailycodingproblems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.DailyCodingProblem44">
     <configuration name="DailyCodingProblem21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dailycodingproblems.DailyCodingProblem21" />
       <module name="Practice" />
@@ -144,6 +130,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DailyCodingProblem44" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dailycodingproblems.DailyCodingProblem44" />
+      <module name="Practice" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dailycodingproblems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="Practice" />
       <option name="PROGRAM_PARAMETERS" value="AAAAAAABCFFFFFAA" />
@@ -175,19 +175,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.DailyCodingProblem20" />
       <item itemvalue="Application.DailyCodingProblem21" />
       <item itemvalue="Application.DailyCodingProblem35" />
       <item itemvalue="Application.DailyCodingProblem42" />
       <item itemvalue="Application.DailyCodingProblem43" />
+      <item itemvalue="Application.DailyCodingProblem44" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DailyCodingProblem44" />
         <item itemvalue="Application.DailyCodingProblem43" />
         <item itemvalue="Application.DailyCodingProblem42" />
         <item itemvalue="Application.DailyCodingProblem35" />
         <item itemvalue="Application.DailyCodingProblem21" />
-        <item itemvalue="Application.DailyCodingProblem20" />
       </list>
     </recent_temporary>
   </component>
@@ -499,14 +499,23 @@
           <line>22</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="table[i][j]" language="JAVA" />
-        <watch expression="!maxStack.isEmpty() ? maxStack.peek() : 0" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>
