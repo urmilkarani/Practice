@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc0fcc7f-64a4-4063-be0d-712b90ce33fb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem45.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dailycodingproblems/EbayQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,21 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DailyCodingProblem44">
-    <configuration name="DailyCodingProblem21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dailycodingproblems.DailyCodingProblem21" />
-      <module name="Practice" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dailycodingproblems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.EbayQuestion">
     <configuration name="DailyCodingProblem35" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dailycodingproblems.DailyCodingProblem35" />
       <module name="Practice" />
@@ -144,6 +131,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EbayQuestion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dailycodingproblems.EbayQuestion" />
+      <module name="Practice" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dailycodingproblems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="Practice" />
       <option name="PROGRAM_PARAMETERS" value="AAAAAAABCFFFFFAA" />
@@ -175,19 +176,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.DailyCodingProblem21" />
       <item itemvalue="Application.DailyCodingProblem35" />
       <item itemvalue="Application.DailyCodingProblem42" />
       <item itemvalue="Application.DailyCodingProblem43" />
       <item itemvalue="Application.DailyCodingProblem44" />
+      <item itemvalue="Application.EbayQuestion" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EbayQuestion" />
         <item itemvalue="Application.DailyCodingProblem44" />
         <item itemvalue="Application.DailyCodingProblem43" />
         <item itemvalue="Application.DailyCodingProblem42" />
         <item itemvalue="Application.DailyCodingProblem35" />
-        <item itemvalue="Application.DailyCodingProblem21" />
       </list>
     </recent_temporary>
   </component>
@@ -250,269 +251,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/ZigZagConverter.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/ZigZagConverter.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/ReverseInteger.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/CustomSort.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/CommonPrefix.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/CommonPrefix.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/ThreeSums.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/LetterCombination.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/LetterCombination.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/GenerateParantheses.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/GenerateParantheses.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem1.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem2.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem2.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem2.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem3.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem3.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem3.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem4.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem7.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem8.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem9.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem11.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem12.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem13.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem16.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem16.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem16.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/ThreeSumDuplicated.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/Solution.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem17.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem17.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem18.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem19.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem19.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem19.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem20.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem20.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem21.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem35.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem35.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem42.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem42.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="129" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem43.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="132" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/DailyCodingProblem44.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="138" />
+          <url>file://$PROJECT_DIR$/src/main/java/dailycodingproblems/EbayQuestion.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
