@@ -3,10 +3,18 @@ package org.example.lowlevel;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * Provides the distributed training checkpoint system implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DistributedTrainingCheckpointSystem {
 
     // --- 1. Checkpoint Metadata & Versioning ---
+/**
+ * Provides the checkpoint metadata implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class CheckpointMetadata {
         private final long checkpointId;
         private final int epoch;
@@ -27,6 +35,10 @@ public class DistributedTrainingCheckpointSystem {
     }
 
     // --- 2. Worker Training State Representation ---
+/**
+ * Provides the worker state implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class WorkerState {
         private final String workerId;
         private int epoch;
@@ -57,6 +69,10 @@ public class DistributedTrainingCheckpointSystem {
     }
 
     // --- 3. Local Checkpointer / Storage Simulator ---
+/**
+ * Provides the local checkpointer implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class LocalCheckpointer {
         private final Map<Long, Map<String, WorkerState>> storage = new ConcurrentHashMap<>();
 
@@ -84,6 +100,10 @@ public class DistributedTrainingCheckpointSystem {
     }
 
     // --- 4. Checkpoint Coordinator ---
+/**
+ * Provides the checkpoint coordinator implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class CheckpointCoordinator {
         private final LocalCheckpointer checkpointer;
         private final List<WorkerNode> workers;
@@ -170,6 +190,10 @@ public class DistributedTrainingCheckpointSystem {
     }
 
     // --- 5. Worker Node ---
+/**
+ * Provides the worker node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class WorkerNode {
         private final String workerId;
         private final WorkerState state;

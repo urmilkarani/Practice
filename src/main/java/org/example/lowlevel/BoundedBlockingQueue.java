@@ -3,6 +3,10 @@ package org.example.lowlevel;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * Provides the bounded blocking queue implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class BoundedBlockingQueue<E> {
     private final Object[] items;
@@ -36,9 +40,14 @@ public class BoundedBlockingQueue<E> {
             // Use a while loop to guard against spurious wakeups
             while (count == items.length) {
                 notFull.await();
+                System.out.println("Producer waiting, queue is full.");
             }
 
             items[tail] = element;
+            /*
+             * Move the tail pointer forward in a circular manner.
+             * If tail reaches the end of the array, it wraps around to 0.
+             */
             tail = (tail + 1) % items.length;
             count++;
 
@@ -57,10 +66,15 @@ public class BoundedBlockingQueue<E> {
             // Guard against spurious wakeups
             while (count == 0) {
                 notEmpty.await();
+                System.out.println("Consumer waiting, queue is empty.");
             }
 
             E element = (E) items[head];
             items[head] = null; // Clear reference to help garbage collection
+            /*
+             * Move the head pointer forward in a circular manner.
+             * If head reaches the end of the array, it wraps around to 0.
+             */
             head = (head + 1) % items.length;
             count--;
 
@@ -91,39 +105,44 @@ public class BoundedBlockingQueue<E> {
         }
     }
 
-    static void main() {
+    static void main(String[] args) {
         BoundedBlockingQueue<Integer> queue = new BoundedBlockingQueue<>(5);
 
         // Producer thread
-        Thread producer = new Thread(() -> {
+        Runnable producer = () -> {
             try {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 50; i++) {
                     queue.put(i);
+                    Thread.sleep(100); // Simulate some delay
                     System.out.println("Produced: " + i);
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-        });
+        };
 
         // Consumer thread
-        Thread consumer = new Thread(() -> {
+        Runnable consumer = () -> {
             try {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 50; i++) {
                     int value = queue.take();
+                    Thread.sleep(150); // Simulate some delay
                     System.out.println("Consumed: " + value);
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-        });
+        };
 
-        producer.start();
-        consumer.start();
+        Thread producerThread = new Thread(producer);
+        Thread consumerThread = new Thread(consumer);
+
+        producerThread.start();
+        consumerThread.start();
 
         try {
-            producer.join();
-            consumer.join();
+            producerThread.join();
+            consumerThread.join();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

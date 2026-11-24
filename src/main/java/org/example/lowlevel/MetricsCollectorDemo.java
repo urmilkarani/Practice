@@ -7,6 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.function.Supplier;
+/**
+ * Provides the metrics collector demo implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class MetricsCollectorDemo {
 

@@ -2,23 +2,26 @@ package org.example.lowlevel;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+
+/**
+ * Provides the hashed wheel timer implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class HashedWheelTimer {
 
     // --- Task Wrapper ---
+/**
+ * Provides the timer task implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class TimerTask {
         private final Runnable task;
-        private final long expirationMs;
         private long remainingRounds;
         private volatile boolean cancelled = false;
 
-        public TimerTask(Runnable task, long delayMs, long tickDurationMs) {
+        public TimerTask(Runnable task) {
             this.task = task;
-            this.expirationMs = System.currentTimeMillis() + delayMs;
-            // Calculate how many full rotations of the wheel this task must wait
-            long totalTicks = delayMs / tickDurationMs;
-            // Will be set by the timer when added to a specific bucket
         }
 
         public void cancel() {
@@ -88,7 +91,7 @@ public class HashedWheelTimer {
             delayMs = 0;
         }
 
-        TimerTask timerTask = new TimerTask(task, delayMs, tickDurationMs);
+        TimerTask timerTask = new TimerTask(task);
 
         // Calculate total ticks from now
         long ticksAhead = delayMs / tickDurationMs;

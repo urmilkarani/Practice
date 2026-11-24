@@ -4,10 +4,18 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * Provides the distributed cache cluster implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DistributedCacheCluster {
 
     // --- 1. Thread-Safe Local LRU Cache (Per Node) ---
+/**
+ * Provides the local lru cache implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class LocalLRUCache<K, V> {
         private final int capacity;
         private final Map<K, Node<K, V>> map;
@@ -106,6 +114,10 @@ public class DistributedCacheCluster {
     }
 
     // --- 2. Storage Node Definition ---
+/**
+ * Provides the cache node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class CacheNode {
         private final String nodeId;
         private final LocalLRUCache<String, String> cache;
@@ -136,6 +148,10 @@ public class DistributedCacheCluster {
     }
 
     // --- 3. Consistent Hash Ring with Virtual Nodes ---
+/**
+ * Provides the consistent hash ring implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class ConsistentHashRing {
         private final SortedMap<Integer, CacheNode> ring = new TreeMap<>();
         private final int virtualNodesPerNode;
@@ -194,6 +210,10 @@ public class DistributedCacheCluster {
     }
 
     // --- 4. Distributed Cache Coordinator / Gateway ---
+/**
+ * Provides the distributed cache cluster gateway implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class DistributedCacheClusterGateway {
         private final ConsistentHashRing hashRing;
         private final int replicationFactor;

@@ -3,6 +3,13 @@ package org.example.lowlevel;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * A thread-safe LRU (Least Recently Used) cache implemented using a synchronized LinkedHashMap.
+ * This cache evicts the least recently accessed entry when the specified capacity is exceeded.
+ *
+ * @param <K> the type of keys maintained by this cache
+ * @param <V> the type of mapped values
+ */
 public class SynchronizedLinkedLRUCache<K, V> {
     private final Map<K, V> map;
 

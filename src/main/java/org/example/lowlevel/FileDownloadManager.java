@@ -10,10 +10,18 @@ import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+/**
+ * Provides the file download manager implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class FileDownloadManager {
 
     // --- 1. Progress Listener Interface ---
+/**
+ * Provides the download listener implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public interface DownloadListener {
         void onProgress(String fileId, long bytesRead, long totalBytes, int percent);
         void onComplete(String fileId, File destination);
@@ -21,6 +29,10 @@ public class FileDownloadManager {
     }
 
     // --- 2. Download Task Definition ---
+/**
+ * Provides the download task implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class DownloadTask implements Runnable {
         private final String fileId;
         private final String fileUrl;

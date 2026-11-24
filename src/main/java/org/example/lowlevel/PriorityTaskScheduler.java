@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+/**
+ * Provides the priority task scheduler implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class PriorityTaskScheduler {
 
     // --- Task Wrapper Implementing Comparable ---
+/**
+ * Provides the priority task implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class PriorityTask implements Comparable<PriorityTask> {
         private final String name;
         private final int priority; // Higher number = higher priority
@@ -38,7 +46,6 @@ public class PriorityTaskScheduler {
         }
     }
 
-    private final int corePoolSize;
     private final PriorityBlockingQueue<PriorityTask> taskQueue;
     private final List<WorkerThread> workers;
     private final AtomicBoolean isShutdown = new AtomicBoolean(false);
@@ -47,7 +54,6 @@ public class PriorityTaskScheduler {
         if (corePoolSize <= 0) {
             throw new IllegalArgumentException("Pool size must be greater than 0");
         }
-        this.corePoolSize = corePoolSize;
         this.taskQueue = new PriorityBlockingQueue<>();
         this.workers = new ArrayList<>(corePoolSize);
 

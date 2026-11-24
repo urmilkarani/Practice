@@ -3,10 +3,18 @@ package org.example.lowlevel;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
+/**
+ * Provides the distributed message queue implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DistributedMessageQueue {
 
     // --- 1. Message Representation ---
+/**
+ * Provides the message implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Message {
         private final long offset;
         private final String key;
@@ -32,6 +40,10 @@ public class DistributedMessageQueue {
     }
 
     // --- 2. Partition Append-Only Log ---
+/**
+ * Provides the partition log implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class PartitionLog {
         private final String topic;
         private final int partitionId;
@@ -68,6 +80,10 @@ public class DistributedMessageQueue {
     }
 
     // --- 3. Broker Node ---
+/**
+ * Provides the broker node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class BrokerNode {
         private final String brokerId;
         // Key: topic-partitionId, Value: PartitionLog
@@ -94,6 +110,10 @@ public class DistributedMessageQueue {
     }
 
     // --- 4. Cluster Metadata & Router ---
+/**
+ * Provides the cluster manager implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class ClusterManager {
         private final Map<String, BrokerNode> brokers = new ConcurrentHashMap<>();
         // Maps topic -> list of partition leader broker IDs
@@ -132,6 +152,10 @@ public class DistributedMessageQueue {
     }
 
     // --- 5. Producer ---
+/**
+ * Provides the producer implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Producer {
         private final ClusterManager clusterManager;
 
@@ -157,6 +181,10 @@ public class DistributedMessageQueue {
     }
 
     // --- 6. Consumer ---
+/**
+ * Provides the consumer implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Consumer {
         private final String consumerGroupId;
         private final ClusterManager clusterManager;

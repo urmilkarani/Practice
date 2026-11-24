@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+/**
+ * Provides the dynamic batching inference server implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DynamicBatchingInferenceServer {
 
     // --- Request & Response Wrappers ---
+/**
+ * Provides the inference request implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class InferenceRequest {
         private final String requestId;
         private final String inputData;
@@ -23,6 +31,10 @@ public class DynamicBatchingInferenceServer {
         public String getInputData() { return inputData; }
         public CompletableFuture<InferenceResponse> getFuture() { return future; }
     }
+/**
+ * Provides the inference response implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
     public static class InferenceResponse {
         private final String requestId;
@@ -47,11 +59,19 @@ public class DynamicBatchingInferenceServer {
     }
 
     // --- Batched Model Interface ---
+/**
+ * Provides the batch model implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public interface BatchModel {
         List<String> predictBatch(List<String> inputs) throws Exception;
     }
 
     // --- Mock Heavy Batch ML Model ---
+/**
+ * Provides the heavy batch ml model implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class HeavyBatchMLModel implements BatchModel {
         @Override
         public List<String> predictBatch(List<String> inputs) throws Exception {

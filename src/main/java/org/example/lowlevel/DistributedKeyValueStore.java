@@ -2,10 +2,18 @@ package org.example.lowlevel;
 
 import java.util.*;
 import java.util.concurrent.*;
+/**
+ * Provides the distributed key value store implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DistributedKeyValueStore {
 
     // --- 1. Versioned Value for Conflict Resolution (Last-Write-Wins) ---
+/**
+ * Provides the versioned value implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class VersionedValue {
         private final String value;
         private final long timestamp;
@@ -25,6 +33,10 @@ public class DistributedKeyValueStore {
     }
 
     // --- 2. Storage Node ---
+/**
+ * Provides the data node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class DataNode {
         private final String nodeId;
         private final Map<String, VersionedValue> store = new ConcurrentHashMap<>();
@@ -59,6 +71,10 @@ public class DistributedKeyValueStore {
     }
 
     // --- 3. Cluster Topology & Partition Router ---
+/**
+ * Provides the cluster topology implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class ClusterTopology {
         private final List<DataNode> nodes;
         private final int replicationFactor;
@@ -87,6 +103,10 @@ public class DistributedKeyValueStore {
     }
 
     // --- 4. Coordinator / Client Gateway (Quorum Operations) ---
+/**
+ * Provides the coordinator implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Coordinator {
         private final ClusterTopology topology;
 

@@ -1,6 +1,11 @@
 package org.example.lowlevel;
 
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
+/**
+ * Provides the atomic circular buffer implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class AtomicCircularBuffer<E> {
     private final Object[] buffer;
@@ -18,7 +23,7 @@ public class AtomicCircularBuffer<E> {
     }
 
     // --- Non-Blocking Offer (Producer) ---
-    public boolean offer(E e) {
+    public synchronized boolean offer(E e) {
         if (e == null) {
             throw new IllegalArgumentException("Null elements are not supported");
         }
@@ -35,6 +40,7 @@ public class AtomicCircularBuffer<E> {
         if (tail.compareAndSet(currentTail, currentTail + 1)) {
             int index = (int) (currentTail & mask);
             buffer[index] = e;
+            System.out.println(Arrays.toString(buffer) + " <-- Produced: " + e);
             return true;
         }
 
@@ -57,6 +63,7 @@ public class AtomicCircularBuffer<E> {
             int index = (int) (currentHead & mask);
             E element = (E) buffer[index];
             buffer[index] = null; // Clear reference to help garbage collection
+            System.out.println(Arrays.toString(buffer) + " --> Consumed: " + element);
             return element;
         }
 
@@ -87,7 +94,6 @@ public class AtomicCircularBuffer<E> {
                 while (!buffer.offer(item)) {
                     Thread.yield();
                 }
-                System.out.println("Produced: " + item);
             }
         }, "Producer");
 
@@ -97,7 +103,6 @@ public class AtomicCircularBuffer<E> {
             while (consumed < 8) {
                 String item = buffer.poll();
                 if (item != null) {
-                    System.out.println("--> Consumed: " + item);
                     consumed++;
                 } else {
                     Thread.yield();

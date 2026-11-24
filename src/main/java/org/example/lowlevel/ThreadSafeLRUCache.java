@@ -4,12 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * Provides the thread safe lru cache implementation used to demonstrate low-level concurrency patterns.
+ */
 
 public class ThreadSafeLRUCache<K, V> {
+
+    // Capacity of the cache
     private final int capacity;
+    // Map to store key-node pairs for O(1) access
     private final Map<K, Node<K, V>> map;
+    // Dummy head and tail nodes to facilitate easy addition and removal of nodes
     private final Node<K, V> head;
     private final Node<K, V> tail;
+    // Lock to ensure thread safety
     private final Lock lock = new ReentrantLock();
 
     // Doubly linked list node structure
@@ -25,6 +33,12 @@ public class ThreadSafeLRUCache<K, V> {
         }
     }
 
+    /***
+     * Constructor to initialize the LRU Cache with a given capacity.
+     *
+     * @param capacity The maximum number of items the cache can hold.
+     * @throws IllegalArgumentException if the capacity is less than or equal to 0.
+     */
     public ThreadSafeLRUCache(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than 0");
@@ -39,6 +53,14 @@ public class ThreadSafeLRUCache<K, V> {
         tail.prev = head;
     }
 
+    /**
+     * Retrieves the value associated with the given key from the cache.
+     * If the key exists, it moves the corresponding node to the head of the list
+     * to mark it as recently used.
+     *
+     * @param key The key whose associated value is to be returned.
+     * @return The value associated with the key, or null if the key does not exist in the cache.
+     */
     public V get(K key) {
         lock.lock();
         try {
@@ -46,6 +68,7 @@ public class ThreadSafeLRUCache<K, V> {
             if (node == null) {
                 return null;
             }
+            // Move the accessed node to the head of the list to mark it as recently used
             moveToHead(node);
             return node.value;
         } finally {
@@ -53,6 +76,14 @@ public class ThreadSafeLRUCache<K, V> {
         }
     }
 
+    /**
+     * Inserts a key-value pair into the cache. If the key already exists, it updates the value
+     * and moves the corresponding node to the head of the list. If the cache exceeds its capacity,
+     * it removes the least recently used (LRU) item from both the map and the linked list.
+     *
+     * @param key   The key to be inserted or updated.
+     * @param value The value to be associated with the key.
+     */
     public void put(K key, V value) {
         lock.lock();
         try {
@@ -76,6 +107,11 @@ public class ThreadSafeLRUCache<K, V> {
         }
     }
 
+    /**
+     * Returns the current number of items in the cache.
+     *
+     * @return The size of the cache.
+     */
     public int size() {
         lock.lock();
         try {
@@ -87,11 +123,21 @@ public class ThreadSafeLRUCache<K, V> {
 
     // --- Helper Methods (Must be called within locked context) ---
 
+    /**
+     * Removes a node from the doubly linked list.
+     *
+     * @param node The node to be removed.
+     */
     private void removeNode(Node<K, V> node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
 
+    /**
+     * Adds a node to the head of the doubly linked list.
+     *
+     * @param node The node to be added.
+     */
     private void addToHead(Node<K, V> node) {
         node.prev = head;
         node.next = head.next;
@@ -99,11 +145,21 @@ public class ThreadSafeLRUCache<K, V> {
         head.next = node;
     }
 
+    /**
+     * Moves a node to the head of the doubly linked list, marking it as recently used.
+     *
+     * @param node The node to be moved.
+     */
     private void moveToHead(Node<K, V> node) {
         removeNode(node);
         addToHead(node);
     }
 
+    /**
+     * Removes the least recently used (LRU) node from the tail of the doubly linked list.
+     *
+     * @return The removed LRU node, or null if the cache is empty.
+     */
     private Node<K, V> removeTail() {
         Node<K, V> lru = tail.prev;
         if (lru == head) {
@@ -113,18 +169,45 @@ public class ThreadSafeLRUCache<K, V> {
         return lru;
     }
 
-    static void main(String[] args) {
+    /**
+     * The main method for testing the ThreadSafeLRUCache implementation.
+     *
+     * @param args Command-line arguments (not used).
+     */
+    public static void main(String[] args) {
+        // Simulate a simple test of the ThreadSafeLRUCache with multiple threads to demonstrate thread safety and LRU eviction.
         ThreadSafeLRUCache<Integer, String> cache = new ThreadSafeLRUCache<>(3);
-        cache.put(1, "One");
-        cache.put(2, "Two");
-        cache.put(3, "Three");
-        System.out.println("Initial Cache Size: " + cache.size()); // Should print 3
 
-        System.out.println("Get key 2: " + cache.get(2)); // Should print "Two"
-        cache.put(4, "Four"); // This should evict key 1 (Least Recently Used)
+        Thread thread1 = new Thread(() -> {
+            cache.put(1, "One");
+            cache.put(2, "Two");
+            System.out.println("Thread 1: " + cache.get(1)); // Should print "One"
+            cache.put(3, "Three");
+            cache.put(4, "Four"); // This should evict key 2 (LRU)
+            System.out.println("Thread 1: " + cache.get(2)); // Should print "null" (evicted)
+        });
 
-        System.out.println("Get key 1 (should be null): " + cache.get(1)); // Should print null
-        System.out.println("Get key 3: " + cache.get(3)); // Should print "Three"
-        System.out.println("Get key 4: " + cache.get(4)); // Should print "Four"
+        Thread thread2 = new Thread(() -> {
+            cache.put(5, "Five");
+            System.out.println("Thread 2: " + cache.get(3)); // Should print "Three"
+            cache.put(6, "Six"); // This should evict key 1 (LRU)
+            System.out.println("Thread 2: " + cache.get(1)); // Should print "null" (evicted)
+        });
+
+        Thread thread3 = new Thread(() -> {
+            System.out.println("Thread 3: " + cache.get(4)); // Should print "Four"
+            cache.put(7, "Seven"); // This should evict key 5 (LRU)
+            System.out.println("Thread 3: " + cache.get(5)); // Should print "null" (evicted)
+        });
+
+        Thread thread4 = new Thread(() -> {
+            System.out.println("Thread 4: " + cache.get(6)); // Should print "Six"
+            cache.put(8, "Eight"); // This should evict key 3 (LRU)
+            System.out.println("Thread 4: " + cache.get(3)); // Should print "null" (evicted)
+        });
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        thread4.start();
     }
 }

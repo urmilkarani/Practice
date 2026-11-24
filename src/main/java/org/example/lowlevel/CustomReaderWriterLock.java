@@ -3,6 +3,10 @@ package org.example.lowlevel;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * Provides the custom reader writer lock implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class CustomReaderWriterLock {
     private int readingThreads = 0;
@@ -66,6 +70,10 @@ public class CustomReaderWriterLock {
     }
 
     // --- Demonstration Main Method ---
+/**
+ * Provides the shared resource implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class SharedResource {
         private String data = "Initial Database State";
         private final CustomReaderWriterLock rwLock;

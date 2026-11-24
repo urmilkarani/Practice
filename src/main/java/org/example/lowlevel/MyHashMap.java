@@ -1,10 +1,16 @@
 package org.example.lowlevel;
 
 import java.util.Objects;
+/**
+ * Provides the my hash map implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class MyHashMap<K, V> {
 
-    // Node structure for separate chaining (linked list nodes)
+    /**
+     * Node structure for separate chaining (linked list nodes)
+     */
     private static class Entry<K, V> {
         K key;
         V value;
@@ -16,11 +22,20 @@ public class MyHashMap<K, V> {
         }
     }
 
+    /**
+     * Default initial capacity for the hash map.
+     */
     private static final int DEFAULT_CAPACITY = 16;
+    /**
+     * Load factor threshold for triggering dynamic resizing.
+     */
     private static final float LOAD_FACTOR = 0.75f;
 
+    // Array of buckets to store entries
     private Entry<K, V>[] buckets;
+    // Current number of key-value pairs in the hash map
     private int size;
+    // Current capacity of the hash map (number of buckets)
     private int capacity;
 
     @SuppressWarnings("unchecked")
@@ -30,25 +45,13 @@ public class MyHashMap<K, V> {
         this.size = 0;
     }
 
-    @SuppressWarnings("unchecked")
-    public MyHashMap(int capacity) {
-        this.capacity = capacity;
-        this.buckets = new Entry[capacity];
-        this.size = 0;
-    }
-
-    // --- Core Hash Function ---
-    private int getBucketIndex(K key) {
-        if (key == null) {
-            return 0; // Handle null keys by mapping them to index 0
-        }
-        int hash = key.hashCode();
-        // Spread higher bits to lower bits to reduce collisions
-        hash ^= (hash >>> 16);
-        return Math.abs(hash) % capacity;
-    }
-
-    // --- Put Operation ---
+    /**
+     * Inserts a key-value pair into the hash map.
+     * If the key already exists, its value is updated.
+     *
+     * @param key   The key to insert.
+     * @param value The value to associate with the key.
+     */
     public void put(K key, V value) {
         int index = getBucketIndex(key);
         Entry<K, V> head = buckets[index];
@@ -75,7 +78,12 @@ public class MyHashMap<K, V> {
         }
     }
 
-    // --- Get Operation ---
+    /**
+     * Retrieves the value associated with a given key.
+     *
+     * @param key The key for which to retrieve the value.
+     * @return The value associated with the key, or null if the key is not found.
+     */
     public V get(K key) {
         int index = getBucketIndex(key);
         Entry<K, V> current = buckets[index];
@@ -86,10 +94,16 @@ public class MyHashMap<K, V> {
             }
             current = current.next;
         }
-        return null; // Key not found
+        // Key not found
+        return null;
     }
 
-    // --- Remove Operation ---
+    /**
+     * Removes the key-value pair associated with the given key.
+     *
+     * @param key The key of the entry to remove.
+     * @return The value associated with the key, or null if the key is not found.
+     */
     public V remove(K key) {
         int index = getBucketIndex(key);
         Entry<K, V> current = buckets[index];
@@ -108,25 +122,55 @@ public class MyHashMap<K, V> {
             prev = current;
             current = current.next;
         }
-        return null; // Key not found
+        // Key not found
+        return null;
     }
 
-    // --- Utility Methods ---
+    /**
+     * Returns the number of key-value pairs in the hash map.
+     *
+     * @return The number of entries in the hash map.
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Checks if the hash map is empty.
+     *
+     * @return true if the hash map is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // --- Dynamic Resizing (Rehashing) ---
+    /**
+     * Computes the bucket index for a given key.
+     * Uses the hashCode of the key and spreads higher bits to lower bits to reduce collisions.
+     *
+     * @param key The key for which to compute the bucket index.
+     * @return The computed bucket index.
+     */
+    private int getBucketIndex(K key) {
+        if (key == null) {
+            return 0; // Handle null keys by mapping them to index 0
+        }
+        int hash = key.hashCode();
+        // Spread higher bits to lower bits to reduce collisions
+        hash ^= (hash >>> 16);
+        return Math.abs(hash) % capacity;
+    }
+
+    /**
+     * Dynamically resizes the hash map when the load factor exceeds the threshold.
+     */
     @SuppressWarnings("unchecked")
     private void resize() {
         capacity *= 2;
         Entry<K, V>[] oldBuckets = buckets;
         buckets = new Entry[capacity];
-        size = 0; // Reset size as elements will be re-inserted
+        // Reset size as elements will be re-inserted
+        size = 0;
 
         for (Entry<K, V> head : oldBuckets) {
             Entry<K, V> current = head;
@@ -137,7 +181,12 @@ public class MyHashMap<K, V> {
         }
     }
 
-    static void main(String[] args) {
+    /**
+     * Main method for testing the MyHashMap implementation.
+     *
+     * @param args Command-line arguments (not used).
+     */
+    public static void main(String[] args) {
         MyHashMap<String, Integer> map = new MyHashMap<>();
         map.put("one", 1);
         map.put("two", 2);
@@ -169,7 +218,7 @@ public class MyHashMap<K, V> {
         map.put("eighteen", 18);
         map.put("nineteen", 19);
         map.put("twenty", 20);
-        System.out.println("Size after adding more elements: " + map.size()); // Output: 20
+        System.out.println("Size after adding more elements: " + map.size()); // Output: 19
         System.out.println("Capacity: " + map.capacity); // Output: 32
     }
 }

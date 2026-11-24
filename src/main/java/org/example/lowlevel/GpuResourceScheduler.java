@@ -4,10 +4,18 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * Provides the gpu resource scheduler implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class GpuResourceScheduler {
 
     // --- Task Wrapper Implementing Comparable ---
+/**
+ * Provides the gpu task implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class GpuTask implements Comparable<GpuTask> {
         private final String taskId;
         private final String tenantId;

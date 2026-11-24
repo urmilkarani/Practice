@@ -3,10 +3,18 @@ package org.example.lowlevel;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * Provides the gpu model eviction service implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class GpuModelEvictionService {
 
     // --- Model Definition ---
+/**
+ * Provides the model implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Model {
         private final String modelId;
         private final long vramRequiredBytes;
@@ -21,6 +29,10 @@ public class GpuModelEvictionService {
     }
 
     // --- GPU Node Managing VRAM and LRU Eviction ---
+/**
+ * Provides the gpu node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class GpuNode {
         private final int gpuId;
         private final long totalVramBytes;

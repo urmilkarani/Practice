@@ -3,6 +3,10 @@ package org.example.lowlevel;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
+/**
+ * Provides the memory pool implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class MemoryPool<T> {
     private final Object[] pool;
@@ -70,6 +74,10 @@ public class MemoryPool<T> {
     }
 
     // --- Main Method for Demonstration ---
+/**
+ * Provides the data packet implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class DataPacket {
         private int id;
         private final byte[] payload;

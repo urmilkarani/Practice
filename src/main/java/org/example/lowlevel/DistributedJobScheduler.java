@@ -4,10 +4,18 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * Provides the distributed job scheduler implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class DistributedJobScheduler {
 
     // --- Job Status Lifecycle ---
+/**
+ * Provides the job status implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public enum JobStatus {
         PENDING,
         RUNNING,
@@ -16,6 +24,10 @@ public class DistributedJobScheduler {
     }
 
     // --- Distributed Job Representation ---
+/**
+ * Provides the job implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Job {
         private final String jobId;
         private final Runnable task;
@@ -42,6 +54,10 @@ public class DistributedJobScheduler {
     }
 
     // --- Centralized Job Repository (Simulating Distributed Storage like Cassandra/PostgreSQL) ---
+/**
+ * Provides the job repository implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class JobRepository {
         private final Map<String, Job> jobs = new ConcurrentHashMap<>();
 
@@ -75,6 +91,10 @@ public class DistributedJobScheduler {
     }
 
     // --- Cluster Coordinator (Heartbeat & Worker Failure Detector) ---
+/**
+ * Provides the cluster coordinator implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class ClusterCoordinator {
         private final Map<String, Long> lastHeartbeat = new ConcurrentHashMap<>();
         private final long heartbeatTimeoutMs;
@@ -132,6 +152,10 @@ public class DistributedJobScheduler {
     }
 
     // --- Master Scheduler (Job Dispatcher) ---
+/**
+ * Provides the master node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class MasterNode {
         private final JobRepository jobRepository;
         private final ClusterCoordinator coordinator;
@@ -173,6 +197,10 @@ public class DistributedJobScheduler {
     }
 
     // --- Worker Node (Executes Jobs & Sends Heartbeats) ---
+/**
+ * Provides the worker node implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class WorkerNode {
         private final String nodeId;
         private final JobRepository jobRepository;

@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+/**
+ * Provides the simple connection pool implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class SimpleConnectionPool {
 
     // --- Mock Connection Class ---
+/**
+ * Provides the connection implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class Connection {
         private final int id;
 

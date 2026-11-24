@@ -4,10 +4,18 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.List;
 import java.util.ArrayList;
+/**
+ * Provides the model inference server implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class ModelInferenceServer {
 
     // --- Request & Response Wrappers ---
+/**
+ * Provides the inference request implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class InferenceRequest {
         private final String requestId;
         private final String inputData;
@@ -23,6 +31,10 @@ public class ModelInferenceServer {
         public String getInputData() { return inputData; }
         public CompletableFuture<InferenceResponse> getFuture() { return future; }
     }
+/**
+ * Provides the inference response implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
     public static class InferenceResponse {
         private final String requestId;
@@ -47,11 +59,19 @@ public class ModelInferenceServer {
     }
 
     // --- Model Interface ---
+/**
+ * Provides the model implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public interface Model {
         String predict(String input) throws Exception;
     }
 
     // --- Mock Heavy ML Model ---
+/**
+ * Provides the heavy ml model implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class HeavyMLModel implements Model {
         @Override
         public String predict(String input) throws Exception {

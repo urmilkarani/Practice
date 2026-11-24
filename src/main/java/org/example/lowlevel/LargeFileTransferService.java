@@ -5,10 +5,18 @@ import java.security.MessageDigest;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
+/**
+ * Provides the large file transfer service implementation used to demonstrate low-level concurrency patterns.
+ */
+
 
 public class LargeFileTransferService {
 
     // --- 1. Transfer Listener Interface ---
+/**
+ * Provides the transfer listener implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public interface TransferListener {
         void onProgress(String transferId, long bytesTransferred, long totalBytes, int percent);
         void onComplete(String transferId, File file);
@@ -16,6 +24,10 @@ public class LargeFileTransferService {
     }
 
     // --- 2. Chunk Metadata Definition ---
+/**
+ * Provides the chunk meta implementation used to demonstrate low-level concurrency patterns.
+ */
+
     public static class ChunkMeta {
         private final int chunkIndex;
         private final long offset;
